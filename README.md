@@ -1,5 +1,9 @@
 
 ![example workflow](https://github.com/sudhakarmlal/mnist-experiment/actions/workflows/main.yml/badge.svg?event=push)
+
+# MNIST Model Training and Testing
+
+
 The Model:
 
 class Net(nn.Module):
@@ -83,8 +87,6 @@ class Net(nn.Module):
         x = x.view(-1, 10)
         return F.log_softmax(x, dim=-1)
 
-
-
 (convblock1): Sequential(
     (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), bias=False)
     (1): ReLU()
@@ -137,7 +139,7 @@ class Net(nn.Module):
 
 
 
-# MNIST Model Training and Testing
+
 
 This project contains two main scripts: `train_model.py` for training a convolutional neural network (CNN) on the MNIST dataset, and `test_model.py` for evaluating the trained model.
 
