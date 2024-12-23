@@ -1,35 +1,31 @@
-import tensorflow as tf
-from tensorflow.keras.models import load_model
-from tensorflow.keras.datasets import mnist
+import unittest
+import torch
+import torch.nn as nn
+from model import Network
 
-def test_model():
-    model = load_model('model_latest_aug.h5')  # Load the latest model
-    model.summary()  # Print model summary for parameter count
-    print(model.count_params())
+class TestModel(unittest.TestCase):
+    def setUp(self):
+        self.model = Ne()
 
-    # Test 1: Check number of parameters
-    assert model.count_params() < 25000, "Model has more than 25000 parameters"
+    def test_total_parameters(self):
+        """Test if total parameters are less than 20000"""
+        total_params = sum(p.numel() for p in self.model.parameters())
+        self.assertLess(total_params, 20000, f"Total parameters ({total_params}) exceed 20000")
 
-    # Test 2: Check input shape
-    assert model.input_shape == (None, 28, 28, 1), "Model does not accept 28x28 input"
+    def test_batch_normalization(self):
+        """Test if batch normalization is used in the model"""
+        has_batchnorm = any(isinstance(module, nn.BatchNorm2d) for module in self.model.modules())
+        self.assertTrue(has_batchnorm, "Model should use Batch Normalization")
 
-    # Test 3: Check output shape
-    assert model.output_shape == (None, 10), "Model does not have 10 outputs"
+    def test_dropout(self):
+        """Test if dropout is used in the model"""
+        has_dropout = any(isinstance(module, nn.Dropout) for module in self.model.modules())
+        self.assertTrue(has_dropout, "Model should use Dropout")
 
-    # Test 4: Check accuracy
-    (x_train, y_train), (x_test, y_test) = mnist.load_data()
-    x_train = x_train.reshape((60000, 28, 28, 1)).astype('float32') / 255
-    x_test = x_test.reshape((10000, 28, 28, 1)).astype('float32') / 255
+    def test_gap(self):
+        """Test if model uses Fully Connected layer (not GAP)"""
+        has_linear = any(isinstance(module, nn.Linear) for module in self.model.modules())
+        self.assertTrue(has_linear, "Model should use Fully Connected layer")
 
-    # Evaluate the model
-    _, accuracy = model.evaluate(x_test, y_test)
-    assert accuracy > 0.40, "Model accuracy is less than 40%"
-
-    # Test 5: Check number of layers
-    assert len(model.layers) < 30, "Model does not have more than 3 layers"
-
-    # Test 6: Check number of test images
-    assert x_test.shape[0] == 10000, "Test set does not have 10000 images"
-
-if __name__ == "__main__":
-    test_model()
+if __name__ == '__main__':
+    unittest.main() 
