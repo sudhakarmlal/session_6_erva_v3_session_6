@@ -9,6 +9,10 @@ https://github.com/sudhakarmlal/session_6_erva_v3_session_6/blob/main/Session6_M
 No of Model Parameters:
 #### 18592
 
+Model Test File:
+
+https://github.com/sudhakarmlal/session_6_erva_v3_session_6/blob/main/test_model_aug.py
+
 The Model:
 
 
