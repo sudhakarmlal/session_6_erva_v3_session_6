@@ -92,6 +92,88 @@ class Net(nn.Module):
         x = x.view(-1, 10)
         return F.log_softmax(x, dim=-1)
 
+Training Logs:
+
+EPOCH: 0
+Loss=0.15141218900680542 Batch_id=468 Accuracy=86.66: 100%|██████████| 469/469 [00:20<00:00, 23.04it/s]
+Test set: Average loss: 0.0558, Accuracy: 9843/10000 (98.43%)
+
+EPOCH: 1
+Loss=0.04573356732726097 Batch_id=468 Accuracy=97.61: 100%|██████████| 469/469 [00:20<00:00, 23.03it/s]
+Test set: Average loss: 0.0390, Accuracy: 9877/10000 (98.77%)
+
+EPOCH: 2
+Loss=0.04180360212922096 Batch_id=468 Accuracy=98.12: 100%|██████████| 469/469 [00:22<00:00, 21.01it/s]
+Test set: Average loss: 0.0306, Accuracy: 9915/10000 (99.15%)
+
+EPOCH: 3
+Loss=0.09601939469575882 Batch_id=468 Accuracy=98.39: 100%|██████████| 469/469 [00:20<00:00, 22.73it/s]
+Test set: Average loss: 0.0285, Accuracy: 9909/10000 (99.09%)
+
+EPOCH: 4
+Loss=0.043447066098451614 Batch_id=468 Accuracy=98.51: 100%|██████████| 469/469 [00:20<00:00, 22.72it/s]
+Test set: Average loss: 0.0314, Accuracy: 9895/10000 (98.95%)
+
+EPOCH: 5
+Loss=0.056956950575113297 Batch_id=468 Accuracy=98.66: 100%|██████████| 469/469 [00:21<00:00, 22.09it/s]
+Test set: Average loss: 0.0262, Accuracy: 9909/10000 (99.09%)
+
+EPOCH: 6
+Loss=0.06073044240474701 Batch_id=468 Accuracy=98.72: 100%|██████████| 469/469 [00:19<00:00, 23.59it/s]
+Test set: Average loss: 0.0225, Accuracy: 9928/10000 (99.28%)
+
+EPOCH: 7
+Loss=0.017309920862317085 Batch_id=468 Accuracy=98.81: 100%|██████████| 469/469 [00:20<00:00, 22.91it/s]
+Test set: Average loss: 0.0218, Accuracy: 9932/10000 (99.32%)
+
+EPOCH: 8
+Loss=0.03483400493860245 Batch_id=468 Accuracy=98.80: 100%|██████████| 469/469 [00:20<00:00, 22.45it/s]
+Test set: Average loss: 0.0236, Accuracy: 9918/10000 (99.18%)
+
+EPOCH: 9
+Loss=0.08535811305046082 Batch_id=468 Accuracy=98.83: 100%|██████████| 469/469 [00:21<00:00, 21.48it/s]
+Test set: Average loss: 0.0217, Accuracy: 9923/10000 (99.23%)
+
+EPOCH: 10
+Loss=0.03130783140659332 Batch_id=468 Accuracy=98.91: 100%|██████████| 469/469 [00:20<00:00, 23.30it/s]
+Test set: Average loss: 0.0223, Accuracy: 9927/10000 (99.27%)
+
+EPOCH: 11
+Loss=0.014949428848922253 Batch_id=468 Accuracy=98.84: 100%|██████████| 469/469 [00:21<00:00, 21.84it/s]
+Test set: Average loss: 0.0190, Accuracy: 9938/10000 (99.38%)
+
+EPOCH: 12
+Loss=0.013398057781159878 Batch_id=468 Accuracy=98.97: 100%|██████████| 469/469 [00:20<00:00, 23.23it/s]
+Test set: Average loss: 0.0211, Accuracy: 9931/10000 (99.31%)
+
+EPOCH: 13
+Loss=0.013040132820606232 Batch_id=468 Accuracy=98.97: 100%|██████████| 469/469 [00:20<00:00, 23.23it/s]
+Test set: Average loss: 0.0221, Accuracy: 9922/10000 (99.22%)
+
+EPOCH: 14
+Loss=0.02502104453742504 Batch_id=468 Accuracy=99.09: 100%|██████████| 469/469 [00:21<00:00, 22.07it/s]
+Test set: Average loss: 0.0199, Accuracy: 9933/10000 (99.33%)
+
+EPOCH: 15
+Loss=0.057667020708322525 Batch_id=468 Accuracy=99.01: 100%|██████████| 469/469 [00:20<00:00, 23.24it/s]
+Test set: Average loss: 0.0193, Accuracy: 9939/10000 (99.39%)
+
+EPOCH: 16
+Loss=0.026692770421504974 Batch_id=468 Accuracy=98.99: 100%|██████████| 469/469 [00:21<00:00, 21.70it/s]
+Test set: Average loss: 0.0186, Accuracy: 9934/10000 (99.34%)
+
+EPOCH: 17
+Loss=0.008235897868871689 Batch_id=468 Accuracy=99.08: 100%|██████████| 469/469 [00:21<00:00, 21.98it/s]
+Test set: Average loss: 0.0200, Accuracy: 9933/10000 (99.33%)
+
+EPOCH: 18
+Loss=0.020493581891059875 Batch_id=468 Accuracy=99.13: 100%|██████████| 469/469 [00:20<00:00, 22.35it/s]
+Test set: Average loss: 0.0168, Accuracy: 9943/10000 (99.43%)
+
+EPOCH: 19
+Loss=0.0013592600589618087 Batch_id=468 Accuracy=99.11: 100%|██████████| 469/469 [00:22<00:00, 20.66it/s]
+Test set: Average loss: 0.0165, Accuracy: 9943/10000 (99.43%)
+
 
 
 This project contains two main scripts: `train_model_aug.py` for training a convolutional neural network (CNN) on the MNIST dataset, and `test_model_aug.py` for evaluating the trained model.
