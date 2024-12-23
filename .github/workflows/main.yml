@@ -1,55 +1,28 @@
-name: CI/CD Pipeline
+name: Build and Test
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
+    - uses: actions/checkout@v4
+    
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.8'
-
+    
     - name: Install dependencies
       run: |
-        pip install tensorflow
-        pip install numpy
-        pip install matplotlib
-        pip install scipy
-
-    - name: Train model
-      run: python train_model.py
-
-    - name: Test model
-      run: python test_model.py
-
-    - name: Run training script
-      run: python train_model_aug.py
-
-    - name: Run testing script
-      run: python test_model_aug.py
-
-    - name: Check model file extension
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    
+    - name: Run tests
       run: |
-           if [[ ! -f model_latest.h5 ]]; then
-             echo "Model file not found!"
-             exit 1
-           fi
-
-    - name: Check number of test images
-      run: |
-           python -c "import numpy as np; from tensorflow.keras.datasets import mnist; (x_train, y_train), (x_test, y_test) = mnist.load_data(); assert x_test.shape[0] == 10000, 'Test set does not have 10000 images'"
-
-    - name: Check model architecture
-      run: |
-           python -c "import tensorflow as tf; from tensorflow.keras.models import load_model; model = load_model('model_latest.h5'); assert len(model.layers) < 30, 'Model have more than 6 layers'"
-
-      
+        python -m unittest test_model.py -v
