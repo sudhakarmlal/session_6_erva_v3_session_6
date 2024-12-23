@@ -6,7 +6,7 @@
 
 This project contains two main scripts: `train_model.py` for training a convolutional neural network (CNN) on the MNIST dataset, and `test_model.py` for evaluating the trained model.
 
-## 1. Training the Model (`train_model.py`)
+## 1. Training the Model (`train_model_aug.py`)
 
 ### Overview
 The `train_model.py` script is responsible for loading the MNIST dataset, building a CNN model, training it, and saving the trained model to a file.
@@ -22,8 +22,6 @@ The `train_model.py` script is responsible for loading the MNIST dataset, buildi
 - **Compilation**: The model is compiled using the Adagrad optimizer and sparse categorical cross-entropy loss.
 - **Training**: The model is trained for one epoch on the training dataset.
 - **Saving the Model**: The trained model is saved to a file named `model_latest.h5`.
-
-- ## 2.Image Augmentation in `train_model_aug.py`
 
 ### Image Augumentation
 The `train_model_aug.py` script is responsible for loading the MNIST dataset, applying image augmentation techniques, building a CNN model, training it, and saving the trained model.
@@ -44,7 +42,7 @@ To train the model, run the following command:
 bash
 python train_model.py
 
-## 3.Testing the Model (`test_model.py`)
+## 3.Testing the Model (`test_model_aug.py`)
 
 ### Overview
 The `test_model.py` script is used to load the trained model and evaluate its performance on the MNIST test dataset.
@@ -58,9 +56,6 @@ The `test_model.py` script is used to load the trained model and evaluate its pe
   - The output shape should be `(None, 10)`.
 - **Accuracy Check**: The model is evaluated on the test dataset, and the accuracy should be greater than 95%.
 
-## 4. Tests in `test_model_aug.py`
-
-### Overview
 The `test_model_aug.py` script is used to load the trained model and evaluate its performance on the MNIST test dataset. It includes several assertions to validate the model's architecture and performance.
 
 ### Tests Conducted
@@ -70,15 +65,15 @@ The following tests are performed in the script:
    - Asserts that the model has fewer than 25,000 parameters.
    - Ensures the model is not overly complex.
 
-2. **Check Input Shape**: 
+2. **Check Batch Normalization**: 
    - Asserts that the model accepts input shapes of `(None, 28, 28, 1)`.
    - Validates that the model is designed for 28x28 grayscale images.
 
-3. **Check Output Shape**: 
+3. **Check Droput**: 
    - Asserts that the model has an output shape of `(None, 10)`.
    - Confirms that the model is set up for 10 classes (digits 0-9).
 
-4. **Check Accuracy**: 
+4. **Check Global Average Pooling**: 
    - Evaluates the model on the test dataset and asserts that the accuracy is greater than 95%.
    - Ensures the model performs well on unseen data.
 
