@@ -23,9 +23,9 @@ class TestModel(unittest.TestCase):
         self.assertTrue(has_dropout, "Model should use Dropout")
 
     def test_gap(self):
-        """Test if model uses Fully Connected layer (not GAP)"""
-        has_linear = any(isinstance(module, nn.Linear) for module in self.model.modules())
-        self.assertTrue(has_linear, "Model should use Fully Connected layer")
+        """Test if model uses Global Average Pooling"""
+        has_linear = any(isinstance(layer, nn.AvgPool2d) for module in self.model.modules())
+        self.assertTrue(has_linear, "Model should use Global average oppling")
 
 if __name__ == '__main__':
     unittest.main() 
