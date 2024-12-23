@@ -40,7 +40,7 @@ Image augmentation is a technique used to artificially expand the size of a trai
 To train the model, run the following command:
 
 bash
-python train_model.py
+python train_model_aug.py
 
 ## 3.Testing the Model (`test_model_aug.py`)
 
