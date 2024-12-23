@@ -62,20 +62,17 @@ The `test_model_aug.py` script is used to load the trained model and evaluate it
 The following tests are performed in the script:
 
 1. **Check Number of Parameters**: 
-   - Asserts that the model has fewer than 25,000 parameters.
-   - Ensures the model is not overly complex.
+   - Asserts that the model has fewer than 20000 parameters
 
 2. **Check Batch Normalization**: 
-   - Asserts that the model accepts input shapes of `(None, 28, 28, 1)`.
-   - Validates that the model is designed for 28x28 grayscale images.
+   - Asserts that the model has used Batch Normalization
 
 3. **Check Droput**: 
-   - Asserts that the model has an output shape of `(None, 10)`.
-   - Confirms that the model is set up for 10 classes (digits 0-9).
+   - Asserts that the model has used dropout`.
 
 4. **Check Global Average Pooling**: 
-   - Evaluates the model on the test dataset and asserts that the accuracy is greater than 95%.
-   - Ensures the model performs well on unseen data.
+   - Evaluates the model on the Model has used Global Average Pooling.
+  
 
 
 ### Usage
@@ -91,4 +88,4 @@ bash
 pip install requirements.txt
 
 ## Conclusion
-This project demonstrates how to train and evaluate a CNN model on the MNIST dataset using TensorFlow and Keras.
+This project demonstrates how to train and evaluate a CNN model on the MNIST dataset using Pytorch
