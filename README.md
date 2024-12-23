@@ -6,63 +6,90 @@
 
 The Model:
 
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        # Input Block
+        self.convblock1 = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=32, kernel_size=(3, 3), padding=0, bias=False),
+            nn.ReLU(),
+            nn.BatchNorm2d(32),
+            nn.Dropout(dropout_value)
+        ) # output_size = 26
+
+        # CONVOLUTION BLOCK 1
+        self.convblock2 = nn.Sequential(
+            nn.Conv2d(in_channels=32, out_channels=32, kernel_size=(3, 3), padding=0, bias=False),
+            nn.ReLU(),
+            nn.BatchNorm2d(32),
+            nn.Dropout(dropout_value)
+        ) # output_size = 24
+
+        # TRANSITION BLOCK 1
+        self.convblock3 = nn.Sequential(
+            nn.Conv2d(in_channels=32, out_channels=10, kernel_size=(1, 1), padding=0, bias=False),
+        ) # output_size = 24
+        self.pool1 = nn.MaxPool2d(2, 2) # output_size = 12
+
+        # CONVOLUTION BLOCK 2
+        self.convblock4 = nn.Sequential(
+            nn.Conv2d(in_channels=10, out_channels=16, kernel_size=(3, 3), padding=0, bias=False),
+            nn.ReLU(),
+            nn.BatchNorm2d(16),
+            nn.Dropout(dropout_value)
+        ) # output_size = 10
+        self.convblock5 = nn.Sequential(
+            nn.Conv2d(in_channels=16, out_channels=16, kernel_size=(3, 3), padding=0, bias=False),
+            nn.ReLU(),
+            nn.BatchNorm2d(16),
+            nn.Dropout(dropout_value)
+        ) # output_size = 8
+        self.convblock6 = nn.Sequential(
+            nn.Conv2d(in_channels=16, out_channels=16, kernel_size=(3, 3), padding=0, bias=False),
+            nn.ReLU(),
+            nn.BatchNorm2d(16),
+            nn.Dropout(dropout_value)
+        ) # output_size = 6
+        self.convblock7 = nn.Sequential(
+            nn.Conv2d(in_channels=16, out_channels=16, kernel_size=(3, 3), padding=1, bias=False),
+            nn.ReLU(),
+            nn.BatchNorm2d(16),
+            nn.Dropout(dropout_value)
+        ) # output_size = 6
+
+        # OUTPUT BLOCK
+        self.gap = nn.Sequential(
+            nn.AvgPool2d(kernel_size=6)
+        ) # output_size = 1
+
+        self.convblock8 = nn.Sequential(
+            nn.Conv2d(in_channels=16, out_channels=10, kernel_size=(1, 1), padding=0, bias=False),
+            # nn.BatchNorm2d(10),
+            # nn.ReLU(),
+            # nn.Dropout(dropout_value)
+        )
 
 
-(convblock1): Sequential(
-    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), bias=False)
-    (1): ReLU()
-    (2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (3): Dropout(p=0.1, inplace=False)
-  )
-  (convblock2): Sequential(
-    (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), bias=False)
-    (1): ReLU()
-    (2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (3): Dropout(p=0.1, inplace=False)
-  )
-  (convblock3): Sequential(
-    (0): Conv2d(32, 10, kernel_size=(1, 1), stride=(1, 1), bias=False)
-  )
-  (pool1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-  (convblock4): Sequential(
-    (0): Conv2d(10, 16, kernel_size=(3, 3), stride=(1, 1), bias=False)
-    (1): ReLU()
-    (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (3): Dropout(p=0.1, inplace=False)
-  )
-  (convblock5): Sequential(
-    (0): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), bias=False)
-    (1): ReLU()
-    (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (3): Dropout(p=0.1, inplace=False)
-  )
-  (convblock6): Sequential(
-    (0): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), bias=False)
-    (1): ReLU()
-    (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (3): Dropout(p=0.1, inplace=False)
-  )
-  (convblock7): Sequential(
-    (0): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-    (1): ReLU()
-    (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (3): Dropout(p=0.1, inplace=False)
-  )
-  (gap): Sequential(
-    (0): AvgPool2d(kernel_size=6, stride=6, padding=0)
-  )
-  (convblock8): Sequential(
-    (0): Conv2d(16, 10, kernel_size=(1, 1), stride=(1, 1), bias=False)
-  )
-  (dropout): Dropout(p=0.1, inplace=False)
-)
+        self.dropout = nn.Dropout(dropout_value)
+
+    def forward(self, x):
+        x = self.convblock1(x)
+        x = self.convblock2(x)
+        x = self.convblock3(x)
+        x = self.pool1(x)
+        x = self.convblock4(x)
+        x = self.convblock5(x)
+        x = self.convblock6(x)
+        x = self.convblock7(x)
+        x = self.gap(x)
+        x = self.convblock8(x)
+
+        x = x.view(-1, 10)
+        return F.log_softmax(x, dim=-1)
 
 
 
-
-
-
-This project contains two main scripts: `train_model.py` for training a convolutional neural network (CNN) on the MNIST dataset, and `test_model.py` for evaluating the trained model.
+This project contains two main scripts: `train_model_aug.py` for training a convolutional neural network (CNN) on the MNIST dataset, and `test_model_aug.py` for evaluating the trained model.
 
 ## 1. Training the Model (`train_model_aug.py`)
 
