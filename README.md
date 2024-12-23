@@ -7,6 +7,7 @@
 The Model:
 
 
+
 class Net(nn.Module):
 
     def __init__(self):
