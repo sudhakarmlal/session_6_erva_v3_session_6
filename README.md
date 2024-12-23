@@ -17,13 +17,21 @@ https://github.com/sudhakarmlal/session_6_erva_v3_session_6/blob/main/test_model
 #### Output of the tests run:
 
 Run python -m unittest test_model_aug.py -v
+
 test_batch_normalization (test_model_aug.TestModel)
+
 Test if batch normalization is used in the model ... ok
+
 test_dropout (test_model_aug.TestModel)
+
 Test if dropout is used in the model ... ok
+
 test_gap (test_model_aug.TestModel)
+
 Test if model uses Global Average Pooling ... ok
+
 test_total_parameters (test_model_aug.TestModel)
+
 Test if total parameters are less than 20000 ... ok
 
 ----------------------------------------------------------------------
