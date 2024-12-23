@@ -6,7 +6,9 @@
 
 The Model:
 
+
 class Net(nn.Module):
+
     def __init__(self):
         super(Net, self).__init__()
         # Input Block
@@ -16,6 +18,7 @@ class Net(nn.Module):
             nn.BatchNorm2d(32),
             nn.Dropout(dropout_value)
         ) # output_size = 26
+
 
         # CONVOLUTION BLOCK 1
         self.convblock2 = nn.Sequential(
