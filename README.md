@@ -2,6 +2,9 @@
 ![example workflow](https://github.com/sudhakarmlal/mnist-experiment/actions/workflows/main.yml/badge.svg?event=push)
 
 # MNIST Model Training and Testing
+NoteBook:
+
+https://github.com/sudhakarmlal/session_6_erva_v3_session_6/blob/main/Session6_MNIST_Experiment.ipynb
 
 
 The Model:
