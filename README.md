@@ -6,6 +6,8 @@ NoteBook:
 
 https://github.com/sudhakarmlal/session_6_erva_v3_session_6/blob/main/Session6_MNIST_Experiment.ipynb
 
+No of Model Parameters:
+#### 18592
 
 The Model:
 
