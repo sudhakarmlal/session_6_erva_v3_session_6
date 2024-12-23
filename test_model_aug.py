@@ -1,11 +1,11 @@
 import unittest
 import torch
 import torch.nn as nn
-from model import Network
+from model import Net
 
 class TestModel(unittest.TestCase):
     def setUp(self):
-        self.model = Ne()
+        self.model = Net()
 
     def test_total_parameters(self):
         """Test if total parameters are less than 20000"""
