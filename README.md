@@ -77,13 +77,6 @@ The following tests are performed in the script:
    - Evaluates the model on the test dataset and asserts that the accuracy is greater than 95%.
    - Ensures the model performs well on unseen data.
 
-5. **Check Number of Layers**: 
-   - Asserts that the model has more than 3 layers.
-   - Validates the complexity of the model architecture.
-
-6. **Check Number of Test Images**: 
-   - Asserts that the test dataset contains exactly 10,000 images.
-   - Ensures the integrity of the test dataset.
 
 ### Usage
 To test the model, run the following command:
@@ -95,7 +88,7 @@ python test_model_aug.py
 Make sure to install the required libraries before running the scripts:
 
 bash
-pip install tensorflow numpy
+pip install requirements.txt
 
 ## Conclusion
 This project demonstrates how to train and evaluate a CNN model on the MNIST dataset using TensorFlow and Keras.
