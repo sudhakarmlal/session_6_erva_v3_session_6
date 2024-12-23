@@ -24,8 +24,8 @@ class TestModel(unittest.TestCase):
 
     def test_gap(self):
         """Test if model uses Global Average Pooling"""
-        has_linear = any(isinstance(layer, nn.AvgPool2d) for module in self.model.modules())
-        self.assertTrue(has_linear, "Model should use Global average oppling")
+        has_linear = any(isinstance(module, nn.AvgPool2d) for module in self.model.modules())
+        self.assertTrue(has_linear, "Model should use Global average pooling")
 
 if __name__ == '__main__':
     unittest.main() 
